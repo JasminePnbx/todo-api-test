@@ -1,9 +1,6 @@
 import logging
-from typing import Any
+from client.api_client import ApiClient
 import requests
-from client.api_client       import ApiClient
-from client.schema_validator  import SchemaValidator, USER_SCHEMA
-from client.response_assert   import ResponseAssert
 
 logger = logging.getLogger(__name__)
 
@@ -14,41 +11,24 @@ class UserApi:
     def __init__(self, client: ApiClient) -> None:
         self._client = client
 
-    def list_users(self) -> list[dict[str, Any]]:
-        resp = self._client.get(self._BASE)
-        body = ResponseAssert.of(resp).status(200).body()
-        for user in body:
-            SchemaValidator.assert_matches(user, USER_SCHEMA)
-        return body
+    def list_users(self) -> requests.Response:
+        logger.info("list_users")
+        return self._client.get(self._BASE)
 
-    def get_user(self, user_id: int) -> dict[str, Any]:
-        resp = self._client.get(f"{self._BASE}/{user_id}")
-        body = ResponseAssert.of(resp).status(200).body()
-        SchemaValidator.assert_matches(body, USER_SCHEMA)
-        return body
-
-    def create_user(self, name: str, email: str,
-                    role: str = "member") -> dict[str, Any]:
-        payload = {"name": name, "email": email, "role": role}
-        resp = self._client.post(self._BASE, body=payload)
-        body = ResponseAssert.of(resp).status(201).body()
-        SchemaValidator.assert_matches(body, USER_SCHEMA)
-        logger.info("create_user | id=%s | email=%s", body["id"], email)
-        return body
-
-    def update_user(self, user_id: int, **fields) -> dict[str, Any]:
-        resp = self._client.put(f"{self._BASE}/{user_id}", body=fields)
-        body = ResponseAssert.of(resp).status(200).body()
-        SchemaValidator.assert_matches(body, USER_SCHEMA)
-        return body
-
-    def delete_user(self, user_id: int) -> None:
-        resp = self._client.delete(f"{self._BASE}/{user_id}")
-        ResponseAssert.of(resp).status(204)
-
-    # 负向操作：返回原始 Response 供测试断言错误码
-    def try_get_user(self, user_id: int) -> requests.Response:
+    def get_user(self, user_id: int) -> requests.Response:
+        logger.info("get_user | id=%d", user_id)
         return self._client.get(f"{self._BASE}/{user_id}")
 
-    def try_create_user(self, payload: dict) -> requests.Response:
+    def create_user(self, name: str, email: str,
+                    role: str = "member") -> requests.Response:
+        payload = {"name": name, "email": email, "role": role}
+        logger.info("create_user | email=%s", email)
         return self._client.post(self._BASE, body=payload)
+
+    def update_user(self, user_id: int, **fields) -> requests.Response:
+        logger.info("update_user | id=%d | fields=%s", user_id, fields)
+        return self._client.put(f"{self._BASE}/{user_id}", body=fields)
+
+    def delete_user(self, user_id: int) -> requests.Response:
+        logger.info("delete_user | id=%d", user_id)
+        return self._client.delete(f"{self._BASE}/{user_id}")
