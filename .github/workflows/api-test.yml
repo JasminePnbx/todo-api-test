@@ -9,6 +9,7 @@ on:
 jobs:
   api-test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -21,13 +22,23 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Start API server
-        run: uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+        run: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 &
 
       - name: Wait for server
         run: sleep 3
+
+      - name: Clean database
+        run: rm -f test_app.db
 
       - name: Run tests
         run: pytest
         env:
           BASE_URL: http://localhost:8000
           ENV: test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results
+          path: reports/

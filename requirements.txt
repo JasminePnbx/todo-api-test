@@ -6,3 +6,4 @@ jsonschema==4.22.0
 pytest==8.2.2
 pytest-rerunfailures==14.0
 python-dotenv==1.0.1
+sqlalchemy==2.0.30
