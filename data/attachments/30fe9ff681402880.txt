@@ -1,0 +1,4 @@
+15:57:41 [INFO    ] api.todo_api - create_todo | title=Ghost | user_id=999999
+15:57:41 [INFO    ] client.api_client - POST http://localhost:8000/todos | body={'title': 'Ghost', 'user_id': 999999}
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "POST /todos HTTP/1.1" 404 27
+15:57:41 [WARNING ] client.api_client -   → 404 | elapsed=1ms

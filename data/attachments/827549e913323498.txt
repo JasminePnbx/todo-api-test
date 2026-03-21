@@ -1,0 +1,8 @@
+15:57:41 [INFO    ] api.user_api - create_user | email=dbtest_b86cc7de@example.com
+15:57:41 [INFO    ] client.api_client - POST http://localhost:8000/users | body={'name': 'To Delete', 'email': 'dbtest_b86cc7de@example.com', 'role': 'member'}
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "POST /users HTTP/1.1" 201 81
+15:57:41 [DEBUG   ] client.api_client -   → 201 | elapsed=3ms
+15:57:41 [INFO    ] api.user_api - delete_user | id=3
+15:57:41 [INFO    ] client.api_client - DEL  http://localhost:8000/users/3
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "DELETE /users/3 HTTP/1.1" 204 0
+15:57:41 [DEBUG   ] client.api_client -   → 204 | elapsed=3ms

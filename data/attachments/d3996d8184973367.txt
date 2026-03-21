@@ -1,0 +1,8 @@
+15:57:41 [INFO    ] api.user_api - create_user | email=dbtest_9750ed8d@example.com
+15:57:41 [INFO    ] client.api_client - POST http://localhost:8000/users | body={'name': 'Before Update', 'email': 'dbtest_9750ed8d@example.com', 'role': 'member'}
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "POST /users HTTP/1.1" 201 85
+15:57:41 [DEBUG   ] client.api_client -   → 201 | elapsed=4ms
+15:57:41 [INFO    ] api.user_api - update_user | id=2 | fields={'name': 'After Update'}
+15:57:41 [INFO    ] client.api_client - PUT  http://localhost:8000/users/2 | body={'name': 'After Update'}
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "PUT /users/2 HTTP/1.1" 200 84
+15:57:41 [DEBUG   ] client.api_client -   → 200 | elapsed=5ms

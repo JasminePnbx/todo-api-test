@@ -1,0 +1,5 @@
+15:57:41 [INFO    ] api.todo_api - create_todo | title=Schema Test | user_id=5
+15:57:41 [INFO    ] client.api_client - POST http://localhost:8000/todos | body={'title': 'Schema Test', 'user_id': 5}
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "POST /todos HTTP/1.1" 201 60
+15:57:41 [DEBUG   ] client.api_client -   → 201 | elapsed=3ms
+15:57:41 [DEBUG   ] client.schema_validator - Schema OK

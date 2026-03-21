@@ -1,0 +1,4 @@
+15:57:41 [INFO    ] api.user_api - list_users
+15:57:41 [INFO    ] client.api_client - GET  http://localhost:8000/users | params=None
+15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "GET /users HTTP/1.1" 200 480
+15:57:41 [DEBUG   ] client.api_client -   → 200 | elapsed=3ms

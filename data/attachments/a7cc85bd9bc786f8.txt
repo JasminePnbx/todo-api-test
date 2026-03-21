@@ -1,0 +1,4 @@
+INFO     api.todo_api:todo_api.py:22 create_todo | title=Ghost | user_id=999999
+INFO     client.api_client:api_client.py:40 POST http://localhost:8000/todos | body={'title': 'Ghost', 'user_id': 999999}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "POST /todos HTTP/1.1" 404 27
+WARNING  client.api_client:api_client.py:68   → 404 | elapsed=1ms

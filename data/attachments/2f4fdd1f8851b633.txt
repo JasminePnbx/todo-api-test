@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:33 delete_user | id=999999
+INFO     client.api_client:api_client.py:61 DEL  http://localhost:8000/users/999999
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "DELETE /users/999999 HTTP/1.1" 404 27
+WARNING  client.api_client:api_client.py:68   → 404 | elapsed=1ms
