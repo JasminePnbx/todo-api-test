@@ -9,6 +9,8 @@ on:
 jobs:
   api-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -21,21 +23,19 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 【关键修复】：在启动服务前，先确保没有任何历史遗留的脏数据库
       - name: Clean database
         run: rm -f test_app.db
 
-      # 启动服务，此时会自动生成全新的干净 db 并建表
       - name: Start API server
         run: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 &
 
       - name: Wait for server ready
         run: |
-                for i in $(seq 1 15); do
-                  curl -s http://localhost:8000/users && echo "Server ready" && break
-                  echo "Waiting... ($i)"
-                  sleep 2
-                done
+          for i in $(seq 1 15); do
+            curl -s http://localhost:8000/users && echo "Server ready" && break
+            echo "Waiting... ($i)"
+            sleep 2
+          done
 
       - name: Run tests
         run: pytest
@@ -43,9 +43,22 @@ jobs:
           BASE_URL: http://localhost:8000
           ENV: test
 
-      - name: Upload test results
+      - name: Install Allure CLI
         if: always()
-        uses: actions/upload-artifact@v4
+        run: |
+          curl -o allure.tgz -L \
+            https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -zxf allure.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          echo "/opt/allure/bin" >> $GITHUB_PATH
+
+      - name: Generate Allure report
+        if: always()
+        run: allure generate allure-results --output allure-report --clean
+
+      - name: Deploy report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: pytest-results
-          path: reports/
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
