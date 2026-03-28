@@ -1,0 +1,8 @@
+09:23:20 [INFO    ] api.user_api - update_user | id=16 | fields={'role': 'guest'}
+09:23:20 [INFO    ] client.api_client - PUT  http://127.0.0.1:9999/users/16 | body={'role': 'guest'}
+09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "PUT /users/16 HTTP/1.1" 200 72
+09:23:20 [DEBUG   ] client.api_client -   → 200 | elapsed=5ms
+09:23:20 [INFO    ] api.user_api - delete_user | id=16
+09:23:20 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/16
+09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "DELETE /users/16 HTTP/1.1" 204 0
+09:23:20 [DEBUG   ] client.api_client -   → 204 | elapsed=3ms

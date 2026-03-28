@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:15 list_users
+INFO     client.api_client:api_client.py:33 GET  http://127.0.0.1:9999/users | params=None
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://127.0.0.1:9999 "GET /users HTTP/1.1" 200 315
+DEBUG    client.api_client:api_client.py:68   → 200 | elapsed=2ms

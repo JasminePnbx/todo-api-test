@@ -1,0 +1,16 @@
+09:23:20 [DEBUG   ] factory.generate - LazyFunction: Evaluating <function UserPayloadFactory.<lambda> at 0x7f0d0fe502c0> on <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>
+09:23:20 [DEBUG   ] factory.generate - LazyFunction: Evaluating <function UserPayloadFactory.<lambda> at 0x7f0d0fe50180> on <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>
+09:23:20 [DEBUG   ] factory.generate - SelfAttribute: Picking attribute 'is_guest' on <Resolver for <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>>
+09:23:20 [DEBUG   ] factory.generate - SelfAttribute: Picking attribute 'is_admin' on <Resolver for <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>>
+09:23:20 [INFO    ] api.user_api - create_user | email=gonzalesjohnathan@herring.com
+09:23:20 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Justin James', 'email': 'gonzalesjohnathan@herring.com', 'role': 'member'}
+09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "POST /users HTTP/1.1" 201 87
+09:23:20 [DEBUG   ] client.api_client -   → 201 | elapsed=5ms
+09:23:20 [INFO    ] api.user_api - delete_user | id=17
+09:23:20 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/17
+09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "DELETE /users/17 HTTP/1.1" 204 0
+09:23:20 [DEBUG   ] client.api_client -   → 204 | elapsed=4ms
+09:23:20 [INFO    ] api.user_api - get_user | id=17
+09:23:20 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users/17 | params=None
+09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "GET /users/17 HTTP/1.1" 404 27
+09:23:20 [WARNING ] client.api_client -   → 404 | elapsed=2ms

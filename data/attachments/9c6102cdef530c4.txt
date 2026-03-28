@@ -1,0 +1,8 @@
+09:23:20 [DEBUG   ] factory.generate - LazyFunction: Evaluating <function UserPayloadFactory.<lambda> at 0x7f0d0fe502c0> on <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>
+09:23:20 [DEBUG   ] factory.generate - LazyFunction: Evaluating <function UserPayloadFactory.<lambda> at 0x7f0d0fe50180> on <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>
+09:23:20 [DEBUG   ] factory.generate - SelfAttribute: Picking attribute 'is_guest' on <Resolver for <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>>
+09:23:20 [DEBUG   ] factory.generate - SelfAttribute: Picking attribute 'is_admin' on <Resolver for <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>>
+09:23:20 [INFO    ] api.user_api - create_user | email=guiyingliu@zhang.cn
+09:23:20 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '何英', 'email': 'guiyingliu@zhang.cn', 'role': 'member'}
+09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "POST /users HTTP/1.1" 201 70
+09:23:20 [DEBUG   ] client.api_client -   → 201 | elapsed=4ms
