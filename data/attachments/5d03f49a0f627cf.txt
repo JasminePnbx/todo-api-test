@@ -1,0 +1,12 @@
+07:05:58 [INFO    ] api.user_api - delete_user | id=999999
+07:05:58 [INFO    ] client.api_client - DEL  http://localhost:9999/users/999999
+07:05:58 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (73): localhost:9999
+07:05:58 [DEBUG   ] urllib3.util.retry - Incremented Retry for (url='/users/999999'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+07:05:58 [WARNING ] urllib3.connectionpool - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=9999): Failed to establish a new connection: [Errno 111] Connection refused")': /users/999999
+07:05:58 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (74): localhost:9999
+07:05:58 [DEBUG   ] urllib3.util.retry - Incremented Retry for (url='/users/999999'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+07:05:59 [WARNING ] urllib3.connectionpool - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=9999): Failed to establish a new connection: [Errno 111] Connection refused")': /users/999999
+07:05:59 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (75): localhost:9999
+07:05:59 [DEBUG   ] urllib3.util.retry - Incremented Retry for (url='/users/999999'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+07:06:00 [WARNING ] urllib3.connectionpool - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=9999): Failed to establish a new connection: [Errno 111] Connection refused")': /users/999999
+07:06:00 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (76): localhost:9999
