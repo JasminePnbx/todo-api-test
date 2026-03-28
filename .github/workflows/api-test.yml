@@ -45,6 +45,7 @@ jobs:
         run: |
           cd app
           nohup python -m uvicorn main:app --host 0.0.0.0 --port 9999 &
+          sleep 5
 
       # 🌟 核心升级 3：等待 API 接口就绪 (端口改为 9999)
       - name: Wait for server ready
