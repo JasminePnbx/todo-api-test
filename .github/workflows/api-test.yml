@@ -25,12 +25,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 🌟 核心升级 1：启动云端 MySQL 并进行“健康探针”等待
       - name: Start MySQL Container
         run: |
           docker run --name todo-mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=todo_db -p 3306:3306 -d mysql:8.0
           echo "Waiting for MySQL to be ready..."
-          # 企业级做法：循环 ping 数据库，直到它真正能够接受连接
           for i in {1..30}; do
             if docker exec todo-mysql mysqladmin ping -h localhost -uroot -p123456 --silent; then
               echo "MySQL is up and running!"
@@ -40,27 +38,31 @@ jobs:
             sleep 2
           done
 
-      # 🌟 核心升级 2：进入 app 目录启动 FastAPI，并指向 9999 端口
       - name: Start API server
         run: |
-          cd app
-          nohup python -m uvicorn main:app --host 0.0.0.0 --port 9999 &
-          sleep 10
+          # 在项目根目录启动，明确指定 app.main:app
+          nohup python -m uvicorn app.main:app --host 0.0.0.0 --port 9999 > uvicorn.log 2>&1 &
+          sleep 5
+          cat uvicorn.log  # 打印启动日志，便于排查
+        env:
+          BASE_URL: http://localhost:9999
+          DB_URL: mysql+pymysql://root:123456@127.0.0.1:3306/todo_db
+          ENV: test
 
-      # 🌟 核心升级 3：等待 API 接口就绪 (端口改为 9999)
       - name: Wait for server ready
         run: |
-          for i in $(seq 1 15); do
-            curl -s http://localhost:9999/users && echo "Server ready" && break
+          for i in {1..15}; do
+            if curl -s http://localhost:9999/users > /dev/null; then
+              echo "Server ready"
+              break
+            fi
             echo "Waiting for API... ($i)"
             sleep 2
           done
 
-      # 🌟 核心升级 4：使用 python -m pytest 解决包路径(PYTHONPATH)找不到的问题
       - name: Run tests
         run: python -m pytest
         env:
-          # 通过环境变量强行注入配置，Pydantic 会自动读取这些值
           BASE_URL: http://localhost:9999
           ENV: test
           DB_URL: mysql+pymysql://root:123456@127.0.0.1:3306/todo_db
