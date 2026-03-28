@@ -29,6 +29,7 @@ jobs:
         run: |
           docker run --name todo-mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=todo_db -p 3306:3306 -d mysql:8.0
           echo "Waiting for MySQL to be ready..."
+          # 给 MySQL 足够的时间启动
           for i in {1..30}; do
             if docker exec todo-mysql mysqladmin ping -h localhost -uroot -p123456 --silent; then
               echo "MySQL is up and running!"
@@ -38,34 +39,42 @@ jobs:
             sleep 2
           done
 
-      - name: Start API server
-        run: |
-          # 在项目根目录启动，明确指定 app.main:app
-          nohup python -m uvicorn app.main:app --host 0.0.0.0 --port 9999 > uvicorn.log 2>&1 &
-          sleep 5
-          cat uvicorn.log  # 打印启动日志，便于排查
+      - name: Initialize Database Tables
         env:
-          BASE_URL: http://localhost:9999
+          # 确保脚本能连上数据库，并且能找到项目根目录的 config.py
           DB_URL: mysql+pymysql://root:123456@127.0.0.1:3306/todo_db
           ENV: test
-
-      - name: Wait for server ready
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          for i in {1..15}; do
-            if curl -s http://localhost:9999/users > /dev/null; then
-              echo "Server ready"
-              break
-            fi
-            echo "Waiting for API... ($i)"
-            sleep 2
-          done
+          # 独立执行建表脚本，确保表 100% 被创建
+          python init_db.py
+
+      - name: Start API server
+        env:
+          BASE_URL: http://127.0.0.1:9999
+          DB_URL: mysql+pymysql://root:123456@127.0.0.1:3306/todo_db
+          ENV: test
+          PYTHONPATH: ${{ github.workspace }}  # 极其关键！防止 ModuleNotFoundError
+        run: |
+          # 启动服务，并将错误日志输出，方便排查
+          nohup python -m uvicorn app.main:app --host 127.0.0.1 --port 9999 > uvicorn.log 2>&1 &
+          
+          # 等待 5 秒确保服务启动
+          sleep 5
+          
+          # 打印服务的启动日志，这步能让你在 Actions 日志里清楚看到 uvicorn 有没有报错
+          echo "--- Uvicorn Log ---"
+          cat uvicorn.log
 
       - name: Run tests
-        run: python -m pytest
         env:
-          BASE_URL: http://localhost:9999
+          BASE_URL: http://127.0.0.1:9999
           ENV: test
           DB_URL: mysql+pymysql://root:123456@127.0.0.1:3306/todo_db
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          # 运行 pytest
+          python -m pytest tests/ -v
 
       - name: Install Allure CLI
         if: always()
