@@ -1,8 +1,0 @@
-INFO     api.todo_api:todo_api.py:22 create_todo | title=Task to complete | user_id=5
-INFO     client.api_client:api_client.py:40 POST http://localhost:8000/todos | body={'title': 'Task to complete', 'user_id': 5}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "POST /todos HTTP/1.1" 201 65
-DEBUG    client.api_client:api_client.py:68   → 201 | elapsed=4ms
-INFO     api.todo_api:todo_api.py:26 complete_todo | id=5
-INFO     client.api_client:api_client.py:54 PATCH http://localhost:8000/todos/5 | body={'completed': True}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "PATCH /todos/5 HTTP/1.1" 200 64
-DEBUG    client.api_client:api_client.py:68   → 200 | elapsed=3ms

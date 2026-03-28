@@ -1,4 +1,0 @@
-INFO     api.user_api:user_api.py:15 list_users
-INFO     client.api_client:api_client.py:33 GET  http://localhost:8000/users | params=None
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "GET /users HTTP/1.1" 200 480
-DEBUG    client.api_client:api_client.py:68   → 200 | elapsed=3ms

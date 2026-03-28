@@ -1,8 +1,0 @@
-INFO     api.user_api:user_api.py:25 create_user | email=todo_owner_f0b4e4@test.com
-INFO     client.api_client:api_client.py:40 POST http://localhost:8000/users | body={'name': 'Todo Owner', 'email': 'todo_owner_f0b4e4@test.com', 'role': 'member'}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "POST /users HTTP/1.1" 201 81
-DEBUG    client.api_client:api_client.py:68   → 201 | elapsed=3ms
-INFO     api.todo_api:todo_api.py:22 create_todo | title=Buy milk | user_id=5
-INFO     client.api_client:api_client.py:40 POST http://localhost:8000/todos | body={'title': 'Buy milk', 'user_id': 5}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "POST /todos HTTP/1.1" 201 57
-DEBUG    client.api_client:api_client.py:68   → 201 | elapsed=3ms

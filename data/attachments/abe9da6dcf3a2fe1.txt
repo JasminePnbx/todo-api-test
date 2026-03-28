@@ -1,4 +1,0 @@
-15:57:41 [INFO    ] api.user_api - delete_user | id=999999
-15:57:41 [INFO    ] client.api_client - DEL  http://localhost:8000/users/999999
-15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "DELETE /users/999999 HTTP/1.1" 404 27
-15:57:41 [WARNING ] client.api_client -   → 404 | elapsed=1ms

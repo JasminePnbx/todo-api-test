@@ -1,8 +1,0 @@
-INFO     api.user_api:user_api.py:25 create_user | email=fixture_b5a00ff7@test.com
-INFO     client.api_client:api_client.py:40 POST http://localhost:8000/users | body={'name': 'Fixture User', 'email': 'fixture_b5a00ff7@test.com', 'role': 'member'}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "POST /users HTTP/1.1" 201 83
-DEBUG    client.api_client:api_client.py:68   → 201 | elapsed=3ms
-INFO     api.user_api:user_api.py:29 update_user | id=16 | fields={'name': 'Updated Name'}
-INFO     client.api_client:api_client.py:47 PUT  http://localhost:8000/users/16 | body={'name': 'Updated Name'}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "PUT /users/16 HTTP/1.1" 200 83
-DEBUG    client.api_client:api_client.py:68   → 200 | elapsed=3ms

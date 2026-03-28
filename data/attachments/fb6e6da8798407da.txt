@@ -1,8 +1,0 @@
-INFO     api.user_api:user_api.py:25 create_user | email=fixture_0ed1616d@test.com
-INFO     client.api_client:api_client.py:40 POST http://localhost:8000/users | body={'name': 'Fixture User', 'email': 'fixture_0ed1616d@test.com', 'role': 'member'}
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "POST /users HTTP/1.1" 201 83
-DEBUG    client.api_client:api_client.py:68   → 201 | elapsed=3ms
-INFO     api.user_api:user_api.py:19 get_user | id=16
-INFO     client.api_client:api_client.py:33 GET  http://localhost:8000/users/16 | params=None
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:8000 "GET /users/16 HTTP/1.1" 200 83
-DEBUG    client.api_client:api_client.py:68   → 200 | elapsed=1ms

@@ -1,8 +1,0 @@
-15:57:41 [INFO    ] api.user_api - create_user | email=todo_owner_f0b4e4@test.com
-15:57:41 [INFO    ] client.api_client - POST http://localhost:8000/users | body={'name': 'Todo Owner', 'email': 'todo_owner_f0b4e4@test.com', 'role': 'member'}
-15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "POST /users HTTP/1.1" 201 81
-15:57:41 [DEBUG   ] client.api_client -   → 201 | elapsed=3ms
-15:57:41 [INFO    ] api.todo_api - create_todo | title=Buy milk | user_id=5
-15:57:41 [INFO    ] client.api_client - POST http://localhost:8000/todos | body={'title': 'Buy milk', 'user_id': 5}
-15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "POST /todos HTTP/1.1" 201 57
-15:57:41 [DEBUG   ] client.api_client -   → 201 | elapsed=3ms

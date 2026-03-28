@@ -1,8 +1,0 @@
-15:57:41 [INFO    ] api.user_api - update_user | id=16 | fields={'role': 'guest'}
-15:57:41 [INFO    ] client.api_client - PUT  http://localhost:8000/users/16 | body={'role': 'guest'}
-15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "PUT /users/16 HTTP/1.1" 200 82
-15:57:41 [DEBUG   ] client.api_client -   → 200 | elapsed=4ms
-15:57:41 [INFO    ] api.user_api - delete_user | id=16
-15:57:41 [INFO    ] client.api_client - DEL  http://localhost:8000/users/16
-15:57:41 [DEBUG   ] urllib3.connectionpool - http://localhost:8000 "DELETE /users/16 HTTP/1.1" 204 0
-15:57:41 [DEBUG   ] client.api_client -   → 204 | elapsed=3ms
