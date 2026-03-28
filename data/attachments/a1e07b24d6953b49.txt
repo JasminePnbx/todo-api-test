@@ -1,0 +1,14 @@
+08:34:24 [DEBUG   ] factory.generate - LazyFunction: Evaluating <function UserPayloadFactory.<lambda> at 0x7ff816c502c0> on <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>
+08:34:24 [DEBUG   ] factory.generate - LazyFunction: Evaluating <function UserPayloadFactory.<lambda> at 0x7ff816c50180> on <BuildStep for <StepBuilder(<FactoryOptions for UserPayloadFactory>, strategy='create')>>
+08:34:24 [INFO    ] api.user_api - create_user | email=isaiah79@garner.org
+08:34:24 [INFO    ] client.api_client - POST http://localhost:9999/users | body={'name': '马建华', 'email': 'isaiah79@garner.org', 'role': 'admin'}
+08:34:24 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (45): localhost:9999
+08:34:24 [DEBUG   ] urllib3.util.retry - Incremented Retry for (url='/users'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+08:34:24 [WARNING ] urllib3.connectionpool - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=9999): Failed to establish a new connection: [Errno 111] Connection refused")': /users
+08:34:24 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (46): localhost:9999
+08:34:24 [DEBUG   ] urllib3.util.retry - Incremented Retry for (url='/users'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+08:34:25 [WARNING ] urllib3.connectionpool - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=9999): Failed to establish a new connection: [Errno 111] Connection refused")': /users
+08:34:25 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (47): localhost:9999
+08:34:25 [DEBUG   ] urllib3.util.retry - Incremented Retry for (url='/users'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+08:34:26 [WARNING ] urllib3.connectionpool - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=9999): Failed to establish a new connection: [Errno 111] Connection refused")': /users
+08:34:26 [DEBUG   ] urllib3.connectionpool - Starting new HTTP connection (48): localhost:9999
