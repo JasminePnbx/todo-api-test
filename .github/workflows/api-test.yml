@@ -28,15 +28,19 @@ jobs:
       - name: Start MySQL Container
         run: |
           docker run --name todo-mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=todo_db -p 3306:3306 -d mysql:8.0
-          echo "Waiting for MySQL to be ready..."
-          # 给 MySQL 足够的时间启动
+          echo "Waiting for MySQL to be completely ready..."
+          
+          # 加强版等待策略：执行一条真实的 SQL 查询，而不是只看端口
           for i in {1..30}; do
-            if docker exec todo-mysql mysqladmin ping -h localhost -uroot -p123456 --silent; then
-              echo "MySQL is up and running!"
+            if docker exec todo-mysql mysql -uroot -p123456 -e "SELECT 1;" > /dev/null 2>&1; then
+              echo "MySQL responded to query!"
+              
+              sleep 5 
+              echo "MySQL is fully initialized!"
               break
             fi
             echo "Waiting for MySQL... ($i/30)"
-            sleep 2
+            sleep 3
           done
 
       - name: Initialize Database Tables
