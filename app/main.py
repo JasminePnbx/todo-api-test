@@ -1,38 +1,51 @@
 import sys
 import os
+from typing import Optional, List
 from fastapi import FastAPI, Depends, HTTPException, status
-from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey
+from pydantic import BaseModel
+from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 
-# 🌟 新增：确保能找到根目录的 config.py
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# 🌟 核心修复 1：动态补全路径，确保能找到根目录的 config.py
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
+
 from config import settings
 
-# 🌟 修改：使用配置中心的地址，并兼容 MySQL 和 SQLite
+# 🌟 核心修复 2：使用配置中心的地址
 SQLALCHEMY_DATABASE_URL = settings.db_url
+
+# 数据库引擎与会话初始化
+# 如果是 SQLite 加上特殊参数，MySQL 不需要
 if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
     engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 else:
-    engine = create_engine(SQLALCHEMY_DATABASE_URL) # MySQL 不需要那行参数
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
 
 # ── 数据模型（对应数据库表） ──────────────────────────────────
 class UserModel(Base):
     __tablename__ = "users"
     id       = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    name     = Column(String(255),  nullable=False)  # 🌟 修复：加上了长度 255
-    email    = Column(String(255),  unique=True, nullable=False, index=True) # 🌟 修复
-    role     = Column(String(50),   default="member") # 🌟 修复
+    name     = Column(String(255),  nullable=False)
+    email    = Column(String(255),  unique=True, nullable=False, index=True)
+    role     = Column(String(50),   default="member")
 
 class TodoModel(Base):
     __tablename__ = "todos"
     id        = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    title     = Column(String(255),  nullable=False) # 🌟 修复
+    title     = Column(String(255),  nullable=False)
     user_id   = Column(Integer, nullable=False)
     completed = Column(Boolean, default=False)
 
-# 启动时自动建表
+# 🌟 核心修复 3：启动时强制自动建表（解决 Table doesn't exist）
 Base.metadata.create_all(bind=engine)
+
+app = FastAPI(title="Todo API Service")
 
 def get_db():
     db = SessionLocal()
@@ -41,23 +54,26 @@ def get_db():
     finally:
         db.close()
 
+# ── Pydantic 模式（用于接口校验） ─────────────────────────────
 class UserCreate(BaseModel):
-    name:  str
+    name: str
     email: str
-    role:  str = "member"
+    role: str = "member"
 
 class UserUpdate(BaseModel):
-    name:  Optional[str] = None
+    name: Optional[str] = None
     email: Optional[str] = None
-    role:  Optional[str] = None
+    role: Optional[str] = None
 
 class TodoCreate(BaseModel):
-    title:   str
+    title: str
     user_id: int
 
 class TodoUpdate(BaseModel):
-    title:     Optional[str]  = None
+    title: Optional[str] = None
     completed: Optional[bool] = None
+
+# ── 接口路由 ──────────────────────────────────────────────────
 
 @app.get("/users")
 def list_users(db: Session = Depends(get_db)):
@@ -111,6 +127,7 @@ def list_todos(user_id: Optional[int] = None, db: Session = Depends(get_db)):
 
 @app.post("/todos", status_code=201)
 def create_todo(payload: TodoCreate, db: Session = Depends(get_db)):
+    # 验证用户是否存在
     if not db.query(UserModel).filter(UserModel.id == payload.user_id).first():
         raise HTTPException(status_code=404, detail="User not found")
     todo = TodoModel(**payload.model_dump())
