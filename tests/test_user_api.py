@@ -1,11 +1,8 @@
-import uuid
 import pytest
 from api.user_api import UserApi
 from client.schema_validator import SchemaValidator, USER_SCHEMA
-
-
-def unique_email() -> str:
-    return f"test_{uuid.uuid4().hex[:8]}@example.com"
+from client.response_assert import ResponseAssert
+from tests.factories import UserPayloadFactory  # 🌟 引入数据工厂
 
 
 class TestListUsers:
@@ -13,19 +10,17 @@ class TestListUsers:
     def test_list_returns_200_and_list_type(self, user_api: UserApi) -> None:
         resp = user_api.list_users()
 
-        assert resp.status_code == 200
-        body = resp.json()
+        body = ResponseAssert(resp).status(200).body()
         assert isinstance(body, list)
 
     def test_list_after_create_contains_new_user(self, user_api: UserApi) -> None:
-        email = unique_email()
-        create_resp = user_api.create_user(name="List Test", email=email)
-        created = create_resp.json()
+        payload = UserPayloadFactory()
+        create_resp = user_api.create_user(**payload)
+        created = ResponseAssert(create_resp).status(201).body()
 
         resp = user_api.list_users()
-        body = resp.json()
+        body = ResponseAssert(resp).status(200).body()
 
-        assert resp.status_code == 200
         ids = [u["id"] for u in body]
         assert created["id"] in ids
 
@@ -33,49 +28,48 @@ class TestListUsers:
 class TestCreateUser:
 
     def test_create_returns_201_and_correct_fields(self, user_api: UserApi) -> None:
-        resp = user_api.create_user(name="Alice", email=unique_email())
+        # 🌟 彻底告别硬编码，全自动生成逼真数据
+        payload = UserPayloadFactory()
+        resp = user_api.create_user(**payload)
 
-        assert resp.status_code == 201
-        body = resp.json()
-        assert body["name"] == "Alice"
-        assert body["role"] == "member"
+        # 🌟 链式断言与动态生成的假数据完美配合
+        body = ResponseAssert(resp).status(201)\
+            .field_equals("name", payload["name"])\
+            .field_equals("email", payload["email"])\
+            .field_equals("role", payload["role"])\
+            .body()
         assert body["id"] > 0
 
     def test_create_with_admin_role(self, user_api: UserApi) -> None:
-        resp = user_api.create_user(
-            name="Admin User",
-            email=unique_email(),
-            role="admin",
-        )
+        # 🌟 激活 is_admin 特性，其余字段自动补齐
+        payload = UserPayloadFactory(is_admin=True)
+        resp = user_api.create_user(**payload)
 
-        assert resp.status_code == 201
-        body = resp.json()
-        assert body["role"] == "admin"
+        ResponseAssert(resp).status(201).field_equals("role", "admin")
 
     def test_duplicate_email_returns_409(self, user_api: UserApi) -> None:
-        email = unique_email()
-        user_api.create_user(name="First", email=email)
+        # 🌟 手动干预指定 email，制造冲突场景
+        payload = UserPayloadFactory(email="conflict@test.com")
+        user_api.create_user(**payload)
 
-        resp = user_api.create_user(name="Second", email=email)
+        resp = user_api.create_user(**payload)
 
-        assert resp.status_code == 409
+        ResponseAssert(resp).status(409)
 
     def test_response_schema_matches_definition(self, user_api: UserApi) -> None:
-        resp = user_api.create_user(name="Schema Test", email=unique_email())
+        payload = UserPayloadFactory()
+        resp = user_api.create_user(**payload)
 
-        assert resp.status_code == 201
-        SchemaValidator.assert_matches(resp.json(), USER_SCHEMA)
+        body = ResponseAssert(resp).status(201).body()
+        SchemaValidator.assert_matches(body, USER_SCHEMA)
 
     @pytest.mark.parametrize("role", ["admin", "member", "guest"])
     def test_all_valid_roles_accepted(self, user_api: UserApi, role: str) -> None:
-        resp = user_api.create_user(
-            name=f"Role Test {role}",
-            email=unique_email(),
-            role=role,
-        )
+        # 🌟 结合参数化，动态注入 role
+        payload = UserPayloadFactory(role=role)
+        resp = user_api.create_user(**payload)
 
-        assert resp.status_code == 201
-        assert resp.json()["role"] == role
+        ResponseAssert(resp).status(201).field_equals("role", role)
 
 
 class TestGetUser:
@@ -85,15 +79,14 @@ class TestGetUser:
     ) -> None:
         resp = user_api.get_user(existing_user["id"])
 
-        assert resp.status_code == 200
-        body = resp.json()
-        assert body["id"]    == existing_user["id"]
-        assert body["email"] == existing_user["email"]
+        ResponseAssert(resp).status(200)\
+            .field_equals("id", existing_user["id"])\
+            .field_equals("email", existing_user["email"])
 
     def test_get_nonexistent_user_returns_404(self, user_api: UserApi) -> None:
         resp = user_api.get_user(user_id=999999)
 
-        assert resp.status_code == 404
+        ResponseAssert(resp).status(404)
 
 
 class TestUpdateUser:
@@ -103,35 +96,32 @@ class TestUpdateUser:
     ) -> None:
         resp = user_api.update_user(existing_user["id"], name="Updated Name")
 
-        assert resp.status_code == 200
-        body = resp.json()
-        assert body["name"]  == "Updated Name"
-        assert body["email"] == existing_user["email"]
+        ResponseAssert(resp).status(200)\
+            .field_equals("name", "Updated Name")\
+            .field_equals("email", existing_user["email"])
 
     def test_update_role_to_guest(
         self, user_api: UserApi, existing_user: dict
     ) -> None:
         resp = user_api.update_user(existing_user["id"], role="guest")
 
-        assert resp.status_code == 200
-        assert resp.json()["role"] == "guest"
+        ResponseAssert(resp).status(200).field_equals("role", "guest")
 
 
 class TestDeleteUser:
 
     def test_delete_then_get_returns_404(self, user_api: UserApi) -> None:
-        create_resp = user_api.create_user(
-            name="To Delete", email=unique_email()
-        )
-        user_id = create_resp.json()["id"]
+        payload = UserPayloadFactory()
+        create_resp = user_api.create_user(**payload)
+        user_id = ResponseAssert(create_resp).status(201).body()["id"]
 
         delete_resp = user_api.delete_user(user_id)
-        assert delete_resp.status_code == 204
+        ResponseAssert(delete_resp).status(204)
 
         get_resp = user_api.get_user(user_id)
-        assert get_resp.status_code == 404
+        ResponseAssert(get_resp).status(404)
 
     def test_delete_nonexistent_returns_404(self, user_api: UserApi) -> None:
         resp = user_api.delete_user(user_id=999999)
 
-        assert resp.status_code == 404
+        ResponseAssert(resp).status(404)

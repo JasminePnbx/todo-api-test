@@ -6,6 +6,7 @@ from client.api_client import ApiClient
 from api.user_api      import UserApi
 from api.todo_api      import TodoApi
 from config            import settings  # 核心：引入强类型配置
+from tests.factories import UserPayloadFactory
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -31,11 +32,9 @@ def todo_api(api_client: ApiClient) -> TodoApi:
 # ── 每个测试类共享的预置用户，避免每个测试都重复创建 ──────────────
 @pytest.fixture(scope="class")
 def existing_user(user_api: UserApi):
-    resp = user_api.create_user(
-        name="Fixture User",
-        email=f"fixture_{uuid.uuid4().hex[:8]}@test.com",
-    )
-    user = resp.json()  # 把 Response 转成 dict
+    payload = UserPayloadFactory() # 🌟 直接用工厂造数
+    resp = user_api.create_user(**payload)
+    user = resp.json()
     yield user
     try:
         user_api.delete_user(user["id"])

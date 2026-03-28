@@ -17,10 +17,11 @@ class TodoApi:
         logger.info("list_todos | user_id=%s", user_id)
         return self._client.get(self._BASE, params=params)
 
-    def create_todo(self, title: str, user_id: int) -> requests.Response:
-        payload = {"title": title, "user_id": user_id}
-        logger.info("create_todo | title=%s | user_id=%d", title, user_id)
-        return self._client.post(self._BASE, body=payload)
+    # 🌟 核心升级：废弃硬编码参数，拥抱 **kwargs
+    # 这样无论是传 title, user_id, 还是 completed，它都能照单全收并扔给底层 Client
+    def create_todo(self, **kwargs) -> requests.Response:
+        logger.info("create_todo | payload=%s", kwargs)
+        return self._client.post(self._BASE, body=kwargs)
 
     def complete_todo(self, todo_id: int) -> requests.Response:
         logger.info("complete_todo | id=%d", todo_id)
