@@ -1,16 +1,20 @@
-from fastapi import FastAPI, HTTPException, Depends
-from pydantic import BaseModel
-from typing import Optional
-from sqlalchemy import create_engine, Column, Integer, String, Boolean
-from sqlalchemy.orm import declarative_base, sessionmaker, Session
+import sys
+import os
+from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
 
-app = FastAPI(title="User Todo API", version="2.0.0")
+# 🌟 新增：确保能找到根目录的 config.py
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import settings
 
-# 🌟 已经改好：直接连接你的 Docker MySQL
-DATABASE_URL = "mysql+pymysql://root:123456@127.0.0.1:3306/todo_db"
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
-Base = declarative_base()
+# 🌟 修改：使用配置中心的地址，并兼容 MySQL 和 SQLite
+SQLALCHEMY_DATABASE_URL = settings.db_url
+if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+else:
+    engine = create_engine(SQLALCHEMY_DATABASE_URL) # MySQL 不需要那行参数
 
 # ── 数据模型（对应数据库表） ──────────────────────────────────
 class UserModel(Base):
