@@ -1,0 +1,38 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Sat Mar 28 07:23:31 UTC 2026","Sat Mar 28 07:23:31 UTC 2026","32","tests","test_db_validation","TestUserDatabaseValidation","","","test_database_count_increases_after_create","
+        创建用户后，数据库总数应该 +1。
+        验证数据库的计数层面是否正确。
+        "
+"broken","Sat Mar 28 07:23:57 UTC 2026","Sat Mar 28 07:23:57 UTC 2026","0","tests","test_user_api","TestUpdateUser","","","test_update_name_reflects_in_response",""
+"broken","Sat Mar 28 07:23:41 UTC 2026","Sat Mar 28 07:23:43 UTC 2026","1807","tests","test_user_api","TestCreateUser","","","test_create_with_admin_role",""
+"broken","Sat Mar 28 07:23:35 UTC 2026","Sat Mar 28 07:23:35 UTC 2026","0","tests","test_db_validation","TestTodoDatabaseValidation","","","test_complete_todo_updated_in_database","PATCH /todos/{id} 标记完成后，数据库里 completed 字段真的变 True 了吗？"
+"broken","Sat Mar 28 07:23:32 UTC 2026","Sat Mar 28 07:23:33 UTC 2026","1805","tests","test_db_validation","TestUserDatabaseValidation","","","test_http_response_matches_database_record","
+        接口响应和数据库记录一致性验证：
+        接口返回的数据和数据库存储的数据完全一致。
+        防止""接口响应正确但存储了不同的值""这种数据不一致 bug。
+        "
+"broken","Sat Mar 28 07:23:45 UTC 2026","Sat Mar 28 07:23:47 UTC 2026","1806","tests","test_user_api","TestCreateUser","","","test_response_schema_matches_definition",""
+"broken","Sat Mar 28 07:23:27 UTC 2026","Sat Mar 28 07:23:29 UTC 2026","1807","tests","test_db_validation","TestUserDatabaseValidation","","","test_update_user_persisted_to_database","
+        PUT /users/{id} 之后，数据库里的记录真的更新了吗？
+        "
+"broken","Sat Mar 28 07:23:51 UTC 2026","Sat Mar 28 07:23:53 UTC 2026","1807","tests","test_user_api","TestCreateUser","","","test_all_valid_roles_accepted[guest]",""
+"broken","Sat Mar 28 07:23:39 UTC 2026","Sat Mar 28 07:23:41 UTC 2026","1807","tests","test_user_api","TestCreateUser","","","test_create_returns_201_and_correct_fields",""
+"broken","Sat Mar 28 07:23:36 UTC 2026","Sat Mar 28 07:23:37 UTC 2026","1806","tests","test_user_api","TestListUsers","","","test_list_returns_200_and_list_type",""
+"broken","Sat Mar 28 07:23:43 UTC 2026","Sat Mar 28 07:23:45 UTC 2026","1806","tests","test_user_api","TestCreateUser","","","test_duplicate_email_returns_409",""
+"broken","Sat Mar 28 07:23:37 UTC 2026","Sat Mar 28 07:23:39 UTC 2026","1806","tests","test_user_api","TestListUsers","","","test_list_after_create_contains_new_user",""
+"broken","Sat Mar 28 07:23:33 UTC 2026","Sat Mar 28 07:23:33 UTC 2026","0","tests","test_db_validation","TestTodoDatabaseValidation","","","test_create_todo_persisted_to_database","POST /todos 之后，数据库里真的有这条 Todo 记录吗？"
+"broken","Sat Mar 28 07:23:49 UTC 2026","Sat Mar 28 07:23:51 UTC 2026","1805","tests","test_user_api","TestCreateUser","","","test_all_valid_roles_accepted[member]",""
+"broken","Sat Mar 28 07:23:59 UTC 2026","Sat Mar 28 07:24:01 UTC 2026","1806","tests","test_user_api","TestDeleteUser","","","test_delete_then_get_returns_404",""
+"broken","Sat Mar 28 07:23:59 UTC 2026","Sat Mar 28 07:23:59 UTC 2026","0","tests","test_user_api","TestUpdateUser","","","test_update_role_to_guest",""
+"broken","Sat Mar 28 07:23:29 UTC 2026","Sat Mar 28 07:23:31 UTC 2026","1806","tests","test_db_validation","TestUserDatabaseValidation","","","test_delete_user_removed_from_database","
+        DELETE /users/{id} 之后，数据库里的记录真的删除了吗？
+        这是""操作后状态验证""的数据库版本。
+        "
+"broken","Sat Mar 28 07:23:53 UTC 2026","Sat Mar 28 07:23:53 UTC 2026","0","tests","test_user_api","TestGetUser","","","test_get_existing_user_returns_200",""
+"broken","Sat Mar 28 07:23:55 UTC 2026","Sat Mar 28 07:23:57 UTC 2026","1806","tests","test_user_api","TestGetUser","","","test_get_nonexistent_user_returns_404",""
+"broken","Sat Mar 28 07:24:01 UTC 2026","Sat Mar 28 07:24:03 UTC 2026","1805","tests","test_user_api","TestDeleteUser","","","test_delete_nonexistent_returns_404",""
+"broken","Sat Mar 28 07:23:25 UTC 2026","Sat Mar 28 07:23:27 UTC 2026","1808","tests","test_db_validation","TestUserDatabaseValidation","","","test_create_user_persisted_to_database","
+        核心验证：POST /users 成功后，数据真的写进数据库了吗？
+        这个用例能发现""接口返回 201 但数据库没写入""的 bug。
+        "
+"broken","Sat Mar 28 07:23:47 UTC 2026","Sat Mar 28 07:23:49 UTC 2026","1806","tests","test_user_api","TestCreateUser","","","test_all_valid_roles_accepted[admin]",""
