@@ -10,15 +10,11 @@ _ENV_FILE = _ROOT / f".env.{_ENV}"
 
 
 class Settings(BaseSettings):
-    # 这里是灵魂：明确告诉 IDE，base_url 必须是个字符串！
+    # 明确告诉 IDE，base_url 必须是个字符串！
     # 如果 .env 里没写 base_url，Pydantic 在启动时就会直接报错拦截，而不是等测试跑了一半才死掉。
     base_url: str
     env: str = "test"  # 给定默认值
     db_url: str
-
-    # 模拟未来可能加入的其他配置，IDE 会自动提示
-    # db_port: int = 3306
-    # timeout: int = 10
 
     # Pydantic 2.x 的核心配置，指定它去读哪个文件
     model_config = SettingsConfigDict(
