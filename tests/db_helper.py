@@ -1,15 +1,14 @@
 # tests/db_helper.py
 """
 数据库验证工具。
-测试用例通过这个模块直接查 SQLite，
 验证接口操作真实写入了数据库，而不只是 HTTP 响应正确。
 """
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+from config import settings  # ✅ 1. 引入强类型配置中心
 
-DATABASE_URL = "sqlite:///./test_app.db"
-
-engine  = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# ✅ 2. 彻底干掉硬编码，直接读取 Pydantic 校验过的 db_url
+engine  = create_engine(settings.db_url)
 Session = sessionmaker(bind=engine)
 
 
