@@ -1,0 +1,4 @@
+INFO     api.todo_api:todo_api.py:23 create_todo | payload={'title': '我们次数', 'user_id': 7, 'completed': False}
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/todos | body={'title': '我们次数', 'user_id': 7, 'completed': False}
+INFO     api.todo_api:todo_api.py:18 list_todos | user_id=None
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/todos | params=None

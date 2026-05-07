@@ -1,0 +1,3 @@
+INFO     client.api_client:api_client.py:15 ApiClient ready | base_url=http://127.0.0.1:9999
+INFO     api.user_api:user_api.py:25 create_user | email=guiying74@ming.net
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': '蒲桂兰', 'email': 'guiying74@ming.net', 'role': 'member'}

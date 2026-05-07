@@ -1,0 +1,5 @@
+INFO     api.user_api:user_api.py:19 get_user | id=999999
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/users/999999 | params=None
+WARNING  client.api_client:api_client.py:69   → 404 | elapsed=2ms
+INFO     api.user_api:user_api.py:33 delete_user | id=16
+INFO     client.api_client:api_client.py:62 DEL  http://127.0.0.1:9999/users/16

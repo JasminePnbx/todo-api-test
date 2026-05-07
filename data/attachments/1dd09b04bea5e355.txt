@@ -1,0 +1,8 @@
+14:16:18 [INFO    ] api.todo_api - create_todo | payload={'title': 'Provide create himself', 'user_id': 7, 'completed': False}
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': 'Provide create himself', 'user_id': 7, 'completed': False}
+14:16:18 [INFO    ] api.todo_api - delete_todo | id=6
+14:16:18 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/todos/6
+14:16:18 [INFO    ] api.todo_api - list_todos | user_id=None
+14:16:18 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/todos | params=None
+14:16:18 [INFO    ] api.user_api - delete_user | id=7
+14:16:18 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/7

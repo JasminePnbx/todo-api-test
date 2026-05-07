@@ -1,0 +1,2 @@
+INFO     api.user_api:user_api.py:25 create_user | email=na78@lisu.cn
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': '王俊', 'email': 'na78@lisu.cn', 'role': 'member'}

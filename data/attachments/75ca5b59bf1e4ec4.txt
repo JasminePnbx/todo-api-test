@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:25 create_user | email=lwood@benson.com
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': 'Anna Barajas', 'email': 'lwood@benson.com', 'role': 'member'}
+INFO     api.user_api:user_api.py:29 update_user | id=2 | fields={'name': 'After Update'}
+INFO     client.api_client:api_client.py:48 PUT  http://127.0.0.1:9999/users/2 | body={'name': 'After Update'}

@@ -1,0 +1,2 @@
+14:16:18 [INFO    ] api.user_api - create_user | email=qcao@jingtao.cn
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Albert Allen', 'email': 'qcao@jingtao.cn', 'role': 'admin'}

@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:25 create_user | email=michaelmarshall@barnes.com
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': '吴慧', 'email': 'michaelmarshall@barnes.com', 'role': 'member'}
+INFO     api.user_api:user_api.py:15 list_users
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/users | params=None

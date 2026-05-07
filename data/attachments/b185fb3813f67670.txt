@@ -1,0 +1,2 @@
+14:16:18 [INFO    ] api.user_api - list_users
+14:16:18 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users | params=None

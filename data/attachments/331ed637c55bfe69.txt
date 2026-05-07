@@ -1,0 +1,2 @@
+INFO     api.user_api:user_api.py:15 list_users
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/users | params=None

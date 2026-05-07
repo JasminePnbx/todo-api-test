@@ -1,0 +1,6 @@
+14:16:18 [INFO    ] api.todo_api - create_todo | payload={'title': 'Religious buy nature movie', 'user_id': 6, 'completed': False}
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': 'Religious buy nature movie', 'user_id': 6, 'completed': False}
+14:16:18 [INFO    ] api.todo_api - complete_todo | id=2
+14:16:18 [INFO    ] client.api_client - PATCH http://127.0.0.1:9999/todos/2 | body={'completed': True}
+14:16:18 [INFO    ] api.user_api - delete_user | id=6
+14:16:18 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/6

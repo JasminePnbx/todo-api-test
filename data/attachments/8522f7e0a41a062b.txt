@@ -1,0 +1,4 @@
+14:16:18 [INFO    ] api.user_api - update_user | id=17 | fields={'role': 'guest'}
+14:16:18 [INFO    ] client.api_client - PUT  http://127.0.0.1:9999/users/17 | body={'role': 'guest'}
+14:16:18 [INFO    ] api.user_api - delete_user | id=17
+14:16:18 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/17

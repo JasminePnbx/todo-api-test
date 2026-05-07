@@ -1,0 +1,3 @@
+14:16:18 [INFO    ] api.user_api - delete_user | id=999999
+14:16:18 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/999999
+14:16:18 [WARNING ] client.api_client -   → 404 | elapsed=2ms

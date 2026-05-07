@@ -1,0 +1,7 @@
+INFO     api.user_api:user_api.py:25 create_user | email=junhao@mt.cn
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': '迟晨', 'email': 'junhao@mt.cn', 'role': 'member'}
+INFO     api.user_api:user_api.py:33 delete_user | id=18
+INFO     client.api_client:api_client.py:62 DEL  http://127.0.0.1:9999/users/18
+INFO     api.user_api:user_api.py:19 get_user | id=18
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/users/18 | params=None
+WARNING  client.api_client:api_client.py:69   → 404 | elapsed=2ms

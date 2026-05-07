@@ -1,0 +1,2 @@
+INFO     api.todo_api:todo_api.py:18 list_todos | user_id=7
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/todos | params={'user_id': 7}

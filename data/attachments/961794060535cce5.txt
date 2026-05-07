@@ -1,0 +1,4 @@
+INFO     api.todo_api:todo_api.py:23 create_todo | payload={'title': 'Stuff from', 'user_id': 7, 'completed': False}
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/todos | body={'title': 'Stuff from', 'user_id': 7, 'completed': False}
+INFO     api.todo_api:todo_api.py:27 complete_todo | id=5
+INFO     client.api_client:api_client.py:55 PATCH http://127.0.0.1:9999/todos/5 | body={'completed': True}

@@ -1,0 +1,4 @@
+14:16:17 [INFO    ] api.user_api - create_user | email=fyao@oh.cn
+14:16:17 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Jamie Baird', 'email': 'fyao@oh.cn', 'role': 'member'}
+14:16:18 [INFO    ] api.user_api - delete_user | id=3
+14:16:18 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/3

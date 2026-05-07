@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:25 create_user | email=fyao@oh.cn
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': 'Jamie Baird', 'email': 'fyao@oh.cn', 'role': 'member'}
+INFO     api.user_api:user_api.py:33 delete_user | id=3
+INFO     client.api_client:api_client.py:62 DEL  http://127.0.0.1:9999/users/3

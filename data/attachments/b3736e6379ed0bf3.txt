@@ -1,0 +1,4 @@
+14:16:18 [INFO    ] api.user_api - create_user | email=michaelmarshall@barnes.com
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '吴慧', 'email': 'michaelmarshall@barnes.com', 'role': 'member'}
+14:16:18 [INFO    ] api.user_api - list_users
+14:16:18 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users | params=None

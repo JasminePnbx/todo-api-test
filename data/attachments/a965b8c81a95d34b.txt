@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:25 create_user | email=molly68@huang.com
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': '黄建', 'email': 'molly68@huang.com', 'role': 'member'}
+INFO     api.todo_api:todo_api.py:23 create_todo | payload={'title': 'Policy others cultural', 'user_id': 7, 'completed': False}
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/todos | body={'title': 'Policy others cultural', 'user_id': 7, 'completed': False}

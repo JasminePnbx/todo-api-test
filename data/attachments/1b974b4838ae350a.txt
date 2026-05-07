@@ -1,0 +1,8 @@
+INFO     api.todo_api:todo_api.py:23 create_todo | payload={'title': 'Provide create himself', 'user_id': 7, 'completed': False}
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/todos | body={'title': 'Provide create himself', 'user_id': 7, 'completed': False}
+INFO     api.todo_api:todo_api.py:34 delete_todo | id=6
+INFO     client.api_client:api_client.py:62 DEL  http://127.0.0.1:9999/todos/6
+INFO     api.todo_api:todo_api.py:18 list_todos | user_id=None
+INFO     client.api_client:api_client.py:34 GET  http://127.0.0.1:9999/todos | params=None
+INFO     api.user_api:user_api.py:33 delete_user | id=7
+INFO     client.api_client:api_client.py:62 DEL  http://127.0.0.1:9999/users/7

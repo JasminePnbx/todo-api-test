@@ -1,0 +1,5 @@
+14:16:18 [INFO    ] api.user_api - create_user | email=conflict@test.com
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '张婷', 'email': 'conflict@test.com', 'role': 'member'}
+14:16:18 [INFO    ] api.user_api - create_user | email=conflict@test.com
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '张婷', 'email': 'conflict@test.com', 'role': 'member'}
+14:16:18 [WARNING ] client.api_client -   → 409 | elapsed=2ms

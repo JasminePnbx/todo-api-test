@@ -1,0 +1,4 @@
+14:16:18 [INFO    ] api.user_api - create_user | email=gjohnson@kelley-warren.info
+14:16:18 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '邹畅', 'email': 'gjohnson@kelley-warren.info', 'role': 'member'}
+14:16:18 [INFO    ] api.user_api - update_user | id=17 | fields={'name': 'Updated Name'}
+14:16:18 [INFO    ] client.api_client - PUT  http://127.0.0.1:9999/users/17 | body={'name': 'Updated Name'}

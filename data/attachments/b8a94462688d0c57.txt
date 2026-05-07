@@ -1,0 +1,4 @@
+INFO     api.user_api:user_api.py:25 create_user | email=jing31@ic.cn
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/users | body={'name': '刘霞', 'email': 'jing31@ic.cn', 'role': 'member'}
+INFO     api.todo_api:todo_api.py:23 create_todo | payload={'title': 'Particularly chair learn', 'user_id': 6, 'completed': False}
+INFO     client.api_client:api_client.py:41 POST http://127.0.0.1:9999/todos | body={'title': 'Particularly chair learn', 'user_id': 6, 'completed': False}
