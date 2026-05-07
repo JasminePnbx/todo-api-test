@@ -1,35 +1,63 @@
-import logging
-from typing import Optional
-from client.api_client import ApiClient
-import requests
+# tests/test_todo_api.py
+import pytest
+from client.response_assert import ResponseAssert
+from utils.factories import TodoPayloadFactory, UserPayloadFactory
 
-logger = logging.getLogger(__name__)
+class TestTodoAPI:
+    @pytest.fixture(scope="class")
+    def test_user(self, user_api):
+        """创建一个测试用户供 todo 使用"""
+        payload = UserPayloadFactory()
+        resp = user_api.create_user(**payload)
+        user = ResponseAssert(resp).status(201).body()
+        yield user
+        user_api.delete_user(user["id"])
 
+    def test_create_todo(self, todo_api, test_user):
+        payload = TodoPayloadFactory(user_id=test_user["id"])
+        resp = todo_api.create_todo(**payload)
+        ResponseAssert(resp).status(201)\
+            .field_equals("title", payload["title"])\
+            .field_equals("user_id", test_user["id"])\
+            .field_equals("completed", False)
 
-class TodoApi:
-    _BASE = "/todos"
+    def test_list_todos(self, todo_api, test_user):
+        # 先创建一条 todo
+        payload = TodoPayloadFactory(user_id=test_user["id"])
+        create_resp = todo_api.create_todo(**payload)
+        todo_id = ResponseAssert(create_resp).status(201).body()["id"]
 
-    def __init__(self, client: ApiClient) -> None:
-        self._client = client
+        # 列出所有 todos
+        resp = todo_api.list_todos()
+        ResponseAssert(resp).status(200)
+        body = resp.json()
+        assert isinstance(body, list)
+        assert any(t["id"] == todo_id for t in body)
 
-    def list_todos(self, user_id: Optional[int] = None) -> requests.Response:
-        params = {"user_id": user_id} if user_id else None
-        logger.info("list_todos | user_id=%s", user_id)
-        return self._client.get(self._BASE, params=params)
+    def test_list_todos_filter_by_user(self, todo_api, test_user):
+        resp = todo_api.list_todos(user_id=test_user["id"])
+        ResponseAssert(resp).status(200)
+        body = resp.json()
+        for todo in body:
+            assert todo["user_id"] == test_user["id"]
 
-    # 🌟 核心升级：废弃硬编码参数，拥抱 **kwargs
-    # 这样无论是传 title, user_id, 还是 completed，它都能照单全收并扔给底层 Client
-    def create_todo(self, **kwargs) -> requests.Response:
-        logger.info("create_todo | payload=%s", kwargs)
-        return self._client.post(self._BASE, body=kwargs)
+    def test_complete_todo(self, todo_api, test_user):
+        payload = TodoPayloadFactory(user_id=test_user["id"], completed=False)
+        create_resp = todo_api.create_todo(**payload)
+        todo_id = ResponseAssert(create_resp).status(201).body()["id"]
 
-    def complete_todo(self, todo_id: int) -> requests.Response:
-        logger.info("complete_todo | id=%d", todo_id)
-        return self._client.patch(
-            f"{self._BASE}/{todo_id}",
-            body={"completed": True}
-        )
+        resp = todo_api.complete_todo(todo_id)
+        ResponseAssert(resp).status(200).field_equals("completed", True)
 
-    def delete_todo(self, todo_id: int) -> requests.Response:
-        logger.info("delete_todo | id=%d", todo_id)
-        return self._client.delete(f"{self._BASE}/{todo_id}")
+    def test_delete_todo(self, todo_api, test_user):
+        payload = TodoPayloadFactory(user_id=test_user["id"])
+        create_resp = todo_api.create_todo(**payload)
+        todo_id = ResponseAssert(create_resp).status(201).body()["id"]
+
+        del_resp = todo_api.delete_todo(todo_id)
+        ResponseAssert(del_resp).status(204)
+
+        # 验证已删除
+        get_resp = todo_api.list_todos()
+        body = get_resp.json()
+        assert not any(t["id"] == todo_id for t in body)

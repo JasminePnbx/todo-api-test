@@ -1,9 +1,10 @@
-import logging
 from typing import Optional
 from client.api_client import ApiClient
 import requests
+from utils.logger import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__)
+
 
 
 class TodoApi:
@@ -17,7 +18,6 @@ class TodoApi:
         logger.info("list_todos | user_id=%s", user_id)
         return self._client.get(self._BASE, params=params)
 
-    # 🌟 核心升级：废弃硬编码参数，拥抱 **kwargs
     # 这样无论是传 title, user_id, 还是 completed，它都能照单全收并扔给底层 Client
     def create_todo(self, **kwargs) -> requests.Response:
         logger.info("create_todo | payload=%s", kwargs)

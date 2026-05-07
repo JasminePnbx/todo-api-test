@@ -5,9 +5,9 @@
 """
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
-from config import settings  # ✅ 1. 引入强类型配置中心
+from config import settings
 
-# ✅ 2. 彻底干掉硬编码，直接读取 Pydantic 校验过的 db_url
+# 取消硬编码，直接读取 Pydantic 校验过的 db_url
 engine  = create_engine(settings.db_url)
 Session = sessionmaker(bind=engine)
 

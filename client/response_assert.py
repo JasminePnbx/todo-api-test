@@ -2,8 +2,6 @@ import logging
 from typing import Any
 import requests
 
-logger = logging.getLogger(__name__)
-
 
 class ResponseAssert:
     def __init__(self, response: requests.Response) -> None:

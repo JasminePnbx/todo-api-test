@@ -9,8 +9,8 @@ import pytest
 from api.user_api import UserApi
 from api.todo_api import TodoApi
 from client.response_assert import ResponseAssert
-from tests.factories import UserPayloadFactory, TodoPayloadFactory  # 🌟 引入造数工厂
-from tests.db_helper import (
+from utils.factories import UserPayloadFactory, TodoPayloadFactory  # 🌟 引入造数工厂
+from utils.db_helper import (
     get_user_from_db,
     get_todo_from_db,
     user_exists_in_db,
@@ -25,7 +25,6 @@ class TestUserDatabaseValidation:
         核心验证：POST /users 成功后，数据真的写进数据库了吗？
         这个用例能发现"接口返回 201 但数据库没写入"的 bug。
         """
-        # 🌟 极简造数
         payload = UserPayloadFactory()
         resp = user_api.create_user(**payload)
         user_id = ResponseAssert(resp).status(201).body()["id"]

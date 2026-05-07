@@ -1,22 +1,14 @@
-import logging
-import uuid
 import pytest
-
 from client.api_client import ApiClient
-from api.user_api      import UserApi
-from api.todo_api      import TodoApi
-from config            import settings  # 核心：引入强类型配置
-from tests.factories import UserPayloadFactory
+from api.user_api import UserApi
+from api.todo_api import TodoApi
+from config import settings
+from utils.factories import UserPayloadFactory   # 注意：factories 还在 tests/ 下，稍后我们会移动它，但先保持原样
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)-8s] %(name)s - %(message)s",
-    datefmt="%H:%M:%S",
-)
+# 不再需要 logging.basicConfig，由 utils.logger 接管
 
 @pytest.fixture(scope="session")
 def api_client():
-    # 彻底告别 os.environ，享受 IDE 的代码补全吧！
     client = ApiClient(base_url=settings.base_url)
     yield client
     client.close()
@@ -29,10 +21,9 @@ def user_api(api_client: ApiClient) -> UserApi:
 def todo_api(api_client: ApiClient) -> TodoApi:
     return TodoApi(client=api_client)
 
-# ── 每个测试类共享的预置用户，避免每个测试都重复创建 ──────────────
 @pytest.fixture(scope="class")
 def existing_user(user_api: UserApi):
-    payload = UserPayloadFactory() # 🌟 直接用工厂造数
+    payload = UserPayloadFactory()
     resp = user_api.create_user(**payload)
     user = resp.json()
     yield user

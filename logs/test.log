@@ -1,0 +1,150 @@
+21:52:52 [INFO    ] todo_api_service - FastAPI application started
+21:53:47 [INFO    ] todo_api_service - FastAPI application started
+21:53:51 [INFO    ] client.api_client - ApiClient ready | base_url=http://127.0.0.1:9999
+21:53:51 [INFO    ] api.user_api - create_user | email=wei60@taoli.cn
+21:53:51 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Rebecca Cruz', 'email': 'wei60@taoli.cn', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=jonesamanda@bentley-torres.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '常飞', 'email': 'jonesamanda@bentley-torres.com', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=katherine48@campbell.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Jessica Cole', 'email': 'katherine48@campbell.com', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=williamskathryn@smith.biz
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'David Schultz', 'email': 'williamskathryn@smith.biz', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=alexis99@chapman.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '李兵', 'email': 'alexis99@chapman.com', 'role': 'admin'}
+21:53:52 [INFO    ] api.user_api - create_user | email=wqin@bp.cn
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Erik Perez', 'email': 'wqin@bp.cn', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=scoleman@hawkins.net
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Julia Williams', 'email': 'scoleman@hawkins.net', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - list_users
+21:53:52 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users | params=None
+21:53:52 [INFO    ] api.user_api - create_user | email=wangwei@jiejing.net
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'John Whitney', 'email': 'wangwei@jiejing.net', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=dingwei@jing.cn
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '刘桂芳', 'email': 'dingwei@jing.cn', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=xiongwei@lizeng.cn
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '张秀梅', 'email': 'xiongwei@lizeng.cn', 'role': 'admin'}
+21:53:52 [INFO    ] api.user_api - create_user | email=conflict@test.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Diane Black', 'email': 'conflict@test.com', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=jmckenzie@reynolds.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Peggy Buchanan', 'email': 'jmckenzie@reynolds.com', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=zacharysimmons@houston.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Nicholas Merritt', 'email': 'zacharysimmons@houston.com', 'role': 'admin'}
+21:53:52 [INFO    ] api.user_api - create_user | email=jingsun@27.net
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '崔璐', 'email': 'jingsun@27.net', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=jenna36@avila-jones.info
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Tara Brown', 'email': 'jenna36@avila-jones.info', 'role': 'guest'}
+21:53:52 [INFO    ] api.user_api - create_user | email=jonesjeffrey@evans-mills.biz
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Diana Brown', 'email': 'jonesjeffrey@evans-mills.biz', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - get_user | id=999999
+21:53:52 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users/999999 | params=None
+21:53:52 [INFO    ] api.user_api - create_user | email=kyleshaw@keller.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Richard Gamble', 'email': 'kyleshaw@keller.com', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - create_user | email=sharpcharles@matthews-johnson.com
+21:53:52 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '李敏', 'email': 'sharpcharles@matthews-johnson.com', 'role': 'member'}
+21:53:52 [INFO    ] api.user_api - delete_user | id=999999
+21:53:52 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/999999
+21:56:07 [INFO    ] todo_api_service - FastAPI application started
+21:56:11 [INFO    ] client.api_client - ApiClient ready | base_url=http://127.0.0.1:9999
+21:56:11 [INFO    ] api.user_api - create_user | email=xuetao@luofang.cn
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '张军', 'email': 'xuetao@luofang.cn', 'role': 'member'}
+21:56:11 [INFO    ] api.user_api - create_user | email=zhangyong@xiahe.cn
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '黄淑兰', 'email': 'zhangyong@xiahe.cn', 'role': 'member'}
+21:56:11 [INFO    ] api.user_api - update_user | id=139 | fields={'name': 'After Update'}
+21:56:11 [INFO    ] client.api_client - PUT  http://127.0.0.1:9999/users/139 | body={'name': 'After Update'}
+21:56:11 [INFO    ] api.user_api - create_user | email=trevorcarrillo@martinez.com
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Timothy Velez', 'email': 'trevorcarrillo@martinez.com', 'role': 'member'}
+21:56:11 [INFO    ] api.user_api - delete_user | id=140
+21:56:11 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/140
+21:56:11 [INFO    ] api.user_api - create_user | email=chenlei@taojin.cn
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Brandon Hanson', 'email': 'chenlei@taojin.cn', 'role': 'member'}
+21:56:11 [INFO    ] api.user_api - create_user | email=junfeng@zhaofan.cn
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Richard Hickman', 'email': 'junfeng@zhaofan.cn', 'role': 'admin'}
+21:56:11 [INFO    ] api.user_api - create_user | email=lopezlisa@benitez.com
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Shannon Horton', 'email': 'lopezlisa@benitez.com', 'role': 'member'}
+21:56:11 [INFO    ] api.todo_api - create_todo | payload={'title': '电脑开始还有', 'user_id': 143, 'completed': False}
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': '电脑开始还有', 'user_id': 143, 'completed': False}
+21:56:11 [INFO    ] api.todo_api - create_todo | payload={'title': 'Stop particular', 'user_id': 143, 'completed': False}
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': 'Stop particular', 'user_id': 143, 'completed': False}
+21:56:11 [INFO    ] api.todo_api - complete_todo | id=21
+21:56:11 [INFO    ] client.api_client - PATCH http://127.0.0.1:9999/todos/21 | body={'completed': True}
+21:56:11 [INFO    ] api.user_api - delete_user | id=143
+21:56:11 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/143
+21:56:11 [INFO    ] api.user_api - create_user | email=mckinneykyle@jimenez-moreno.com
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Charles Carson', 'email': 'mckinneykyle@jimenez-moreno.com', 'role': 'member'}
+21:56:11 [INFO    ] api.todo_api - create_todo | payload={'title': '的话使用', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': '的话使用', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] api.todo_api - create_todo | payload={'title': 'Current him husband create', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': 'Current him husband create', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] api.todo_api - list_todos | user_id=None
+21:56:11 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/todos | params=None
+21:56:11 [INFO    ] api.todo_api - list_todos | user_id=144
+21:56:11 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/todos | params={'user_id': 144}
+21:56:11 [INFO    ] api.todo_api - create_todo | payload={'title': 'Range ago what', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': 'Range ago what', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] api.todo_api - complete_todo | id=24
+21:56:11 [INFO    ] client.api_client - PATCH http://127.0.0.1:9999/todos/24 | body={'completed': True}
+21:56:11 [INFO    ] api.todo_api - create_todo | payload={'title': '关于当然只有', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/todos | body={'title': '关于当然只有', 'user_id': 144, 'completed': False}
+21:56:11 [INFO    ] api.todo_api - delete_todo | id=25
+21:56:11 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/todos/25
+21:56:11 [INFO    ] api.todo_api - list_todos | user_id=None
+21:56:11 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/todos | params=None
+21:56:11 [INFO    ] api.user_api - delete_user | id=144
+21:56:11 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/144
+21:56:11 [INFO    ] api.user_api - list_users
+21:56:11 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users | params=None
+21:56:11 [INFO    ] api.user_api - create_user | email=mark50@arroyo-esparza.org
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '傅辉', 'email': 'mark50@arroyo-esparza.org', 'role': 'member'}
+21:56:11 [INFO    ] api.user_api - list_users
+21:56:11 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users | params=None
+21:56:11 [INFO    ] api.user_api - create_user | email=yong70@lg.cn
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Tyler Allen', 'email': 'yong70@lg.cn', 'role': 'member'}
+21:56:11 [INFO    ] api.user_api - create_user | email=anthonycamacho@diaz-rivera.biz
+21:56:11 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Daniel Reyes', 'email': 'anthonycamacho@diaz-rivera.biz', 'role': 'admin'}
+21:56:12 [INFO    ] api.user_api - create_user | email=conflict@test.com
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Robert Kennedy', 'email': 'conflict@test.com', 'role': 'member'}
+21:56:12 [WARNING ] client.api_client -   → 409 | elapsed=6ms
+21:56:12 [INFO    ] api.user_api - create_user | email=conflict@test.com
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Robert Kennedy', 'email': 'conflict@test.com', 'role': 'member'}
+21:56:12 [WARNING ] client.api_client -   → 409 | elapsed=6ms
+21:56:12 [INFO    ] api.user_api - create_user | email=yanyu@kang.cn
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Daisy Gilbert', 'email': 'yanyu@kang.cn', 'role': 'member'}
+21:56:12 [INFO    ] api.user_api - create_user | email=yang06@ming.com
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '杨博', 'email': 'yang06@ming.com', 'role': 'admin'}
+21:56:12 [INFO    ] api.user_api - create_user | email=junyu@juanzou.cn
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Scott Murray', 'email': 'junyu@juanzou.cn', 'role': 'member'}
+21:56:12 [INFO    ] api.user_api - create_user | email=yanzhou@qiang.cn
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '兰博', 'email': 'yanzhou@qiang.cn', 'role': 'guest'}
+21:56:12 [INFO    ] api.user_api - create_user | email=shaochao@juanyong.cn
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '丛玉梅', 'email': 'shaochao@juanyong.cn', 'role': 'member'}
+21:56:12 [INFO    ] api.user_api - get_user | id=152
+21:56:12 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users/152 | params=None
+21:56:12 [INFO    ] api.user_api - get_user | id=999999
+21:56:12 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users/999999 | params=None
+21:56:12 [WARNING ] client.api_client -   → 404 | elapsed=7ms
+21:56:12 [INFO    ] api.user_api - delete_user | id=152
+21:56:12 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/152
+21:56:12 [INFO    ] api.user_api - create_user | email=bzheng@han.cn
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': 'Natalie Wood MD', 'email': 'bzheng@han.cn', 'role': 'member'}
+21:56:12 [INFO    ] api.user_api - update_user | id=153 | fields={'name': 'Updated Name'}
+21:56:12 [INFO    ] client.api_client - PUT  http://127.0.0.1:9999/users/153 | body={'name': 'Updated Name'}
+21:56:12 [INFO    ] api.user_api - update_user | id=153 | fields={'role': 'guest'}
+21:56:12 [INFO    ] client.api_client - PUT  http://127.0.0.1:9999/users/153 | body={'role': 'guest'}
+21:56:12 [INFO    ] api.user_api - delete_user | id=153
+21:56:12 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/153
+21:56:12 [INFO    ] api.user_api - create_user | email=tangyan@liqin.net
+21:56:12 [INFO    ] client.api_client - POST http://127.0.0.1:9999/users | body={'name': '丁柳', 'email': 'tangyan@liqin.net', 'role': 'member'}
+21:56:12 [INFO    ] api.user_api - delete_user | id=154
+21:56:12 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/154
+21:56:12 [INFO    ] api.user_api - get_user | id=154
+21:56:12 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users/154 | params=None
+21:56:12 [WARNING ] client.api_client -   → 404 | elapsed=9ms
+21:56:12 [INFO    ] api.user_api - delete_user | id=999999
+21:56:12 [INFO    ] client.api_client - DEL  http://127.0.0.1:9999/users/999999
+21:56:12 [WARNING ] client.api_client -   → 404 | elapsed=9ms
+22:00:17 [INFO    ] todo_api_service - FastAPI application started
+22:00:21 [INFO    ] client.api_client - ApiClient ready | base_url=http://127.0.0.1:9999
+22:00:21 [INFO    ] client.api_client - POST http://127.0.0.1:9999/callback/payment | body={'transaction_id': '123', 'status': 'SUCCESS'}
+22:01:41 [INFO    ] todo_api_service - FastAPI application started
+22:01:42 [INFO    ] client.api_client - ApiClient ready | base_url=http://127.0.0.1:9999
+22:01:42 [INFO    ] client.api_client - POST http://127.0.0.1:9999/callback/payment | body={'transaction_id': 'TXN789', 'status': 'SUCCESS', 'sign': 'abc123'}

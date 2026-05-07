@@ -28,7 +28,6 @@ class UserPayloadFactory(factory.DictFactory):
             role="guest"
         )
 
-
 class TodoPayloadFactory(factory.DictFactory):
     """Todo 接口请求体造数工厂"""
     # 自动生成一句简短的假句子作为标题

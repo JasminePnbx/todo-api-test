@@ -1,8 +1,8 @@
 import pytest
 from api.user_api import UserApi
-from client.schema_validator import SchemaValidator, USER_SCHEMA
+from utils.schema_validator import SchemaValidator, USER_SCHEMA
 from client.response_assert import ResponseAssert
-from tests.factories import UserPayloadFactory  # 🌟 引入数据工厂
+from utils.factories import UserPayloadFactory  # 🌟 引入数据工厂
 
 
 class TestListUsers:
@@ -28,11 +28,9 @@ class TestListUsers:
 class TestCreateUser:
 
     def test_create_returns_201_and_correct_fields(self, user_api: UserApi) -> None:
-        # 🌟 彻底告别硬编码，全自动生成逼真数据
         payload = UserPayloadFactory()
         resp = user_api.create_user(**payload)
 
-        # 🌟 链式断言与动态生成的假数据完美配合
         body = ResponseAssert(resp).status(201)\
             .field_equals("name", payload["name"])\
             .field_equals("email", payload["email"])\
@@ -41,7 +39,6 @@ class TestCreateUser:
         assert body["id"] > 0
 
     def test_create_with_admin_role(self, user_api: UserApi) -> None:
-        # 🌟 激活 is_admin 特性，其余字段自动补齐
         payload = UserPayloadFactory(is_admin=True)
         resp = user_api.create_user(**payload)
 

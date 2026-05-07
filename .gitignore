@@ -1,9 +1,12 @@
 .venv/
+
 __pycache__/
 .pytest_cache/
 *.pyc
+
 .env.staging
 .env.dev
+
 test_app.db
 allure-results/
 allure-report/

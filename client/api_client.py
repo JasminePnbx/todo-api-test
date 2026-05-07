@@ -2,8 +2,9 @@ import logging
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from utils.logger import setup_logger
 
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__)
 
 
 class ApiClient:
@@ -70,3 +71,4 @@ class ApiClient:
 
     def close(self) -> None:
         self._session.close()
+
