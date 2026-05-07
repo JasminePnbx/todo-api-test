@@ -1,4 +1,0 @@
-09:23:20 [INFO    ] api.user_api - list_users
-09:23:20 [INFO    ] client.api_client - GET  http://127.0.0.1:9999/users | params=None
-09:23:20 [DEBUG   ] urllib3.connectionpool - http://127.0.0.1:9999 "GET /users HTTP/1.1" 200 315
-09:23:20 [DEBUG   ] client.api_client -   → 200 | elapsed=2ms
